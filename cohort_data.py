@@ -21,6 +21,7 @@ def unique_houses(filename):
             continue
         houses.append(data1[2])
         #houses = [house for house in houses if house != " "]
+    
     return set(houses)
 
     # Code goes here
@@ -41,17 +42,42 @@ def sort_by_cohort(filename):
     >>> sort_by_cohort("cohort_data.txt")
     [['Harry Potter', 'Mandy Brocklehurst', 'Ron Weasley', 'Oliver Wood', 'Colin Creevey', 'Cho Chang', 'Michael Corner', 'Draco Malfoy', 'Seamus Finnigan', 'Eddie Carmichael', 'Theodore Nott', 'Terence Higgs', 'Hermione Granger', 'Penelope Clearwater', 'Angelina Johnson', 'Dennis Creevey'], ['Neville Longbottom', 'Cedric Diggory', 'Pansy Parkinson', 'Anthony Goldstein', 'Padma Patil', 'Luna Lovegood', 'Eleanor Branstone', 'Lee Jordan', 'Marietta Edgecombe', 'Andrew Kirke', 'Ginny Weasley', 'Mary Macdonald', 'Blaise Zabini', 'Natalie McDonald', 'Adrian Pucey', 'Hannah Abbott', 'Graham Pritchard', 'Susan Bones', 'Roger Davies', 'Owen Cauldwell'], ['Laura Madley', 'Orla Quirke', 'Parvati Patil', 'Eloise Midgeon', 'Zacharias Smith', 'Cormac McLaggen', 'Lisa Turpin', 'Demelza Robins', 'Ernie Macmillan', 'Millicent Bullstrode', 'Percy Weasley', 'Jimmy Peakes', 'Justin Finch-Fletchley', 'Miles Bletchley', 'Malcolm Baddock'], ['Marcus Belby', 'Euan Abercrombie', 'Vincent Crabbe', 'Ritchie Coote', 'Katie Bell', 'Terry Boot', 'Lavender Brown', 'Gregory Goyle', 'Marcus Flint', 'Dean Thomas', 'Jack Sloper', 'Rose Zeller', 'Stewart Ackerley', 'Fred Weasley', 'George Weasley', 'Romilda Vane', 'Alicia Spinnet', 'Kevin Whitby'], ['Friendly Friar', 'Grey Lady', 'Nearly Headless Nick', 'Bloody Baron']]
     """
+    file1 = open(filename)
+    cohort = []
+    gosts = []
+    for line in file1:
+        data1 = line.rstrip().split("|")
 
-    all_students = []
-    winter_16 = []
-    spring_16 = []
-    summer_16 = []
-    fall_15 = []
-    ghosts = []
+
+        if data1[4] != "I":
+            print(data1[4])
+            name = data1[:2]
+            name = ' '.join(name)
+            print(name)
+            if data1[4] == 'G':
+                print("yes")
+                gosts.append(name)
+                #print("has g")
+            else:
+                cohort.append(name)
+                #print("g")
+
+            
+        
+    return data1[4]
+    
+    # all_students = []
+    # winter_16 = []
+    # spring_16 = []
+    # summer_16 = []
+    # fall_15 = []
+    # ghosts = []
 
     # Code goes here
 
-    return all_students
+    # return all_students
+a = sort_by_cohort("cohort_data.txt")
+print(a)
 
 
 def hogwarts_by_house(filename):
@@ -193,10 +219,10 @@ def find_house_members_by_student_name(student_list):
 #
 
 
-
+'''
 if __name__ == "__main__":
     import doctest
-
     result = doctest.testmod()
     if result.failed == 0:
         print("ALL TESTS PASSED")
+'''
